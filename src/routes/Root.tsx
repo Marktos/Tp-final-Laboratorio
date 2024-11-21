@@ -12,26 +12,33 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Add, Delete, Inventory, Person } from '@mui/icons-material';
 import { Outlet, useNavigate } from 'react-router-dom';
+import Footer from '../components/Footer'; 
 
 const drawerWidth = 240;
 
 export default function Root() {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', minHeight: '100vh', flexDirection: 'column' }}>
       <CssBaseline />
+      {/* AppBar */}
       <AppBar
         position="fixed"
-        sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
+        sx={{
+          width: `calc(100% - ${drawerWidth}px)`,
+          ml: `${drawerWidth}px`,
+          bgcolor: '#388e3c', // Verde
+        }}
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
-            Inventory Manager
+            Gestor de inventario
           </Typography>
         </Toolbar>
       </AppBar>
+
+      {/* Drawer */}
       <Drawer
         sx={{
           width: drawerWidth,
@@ -39,6 +46,7 @@ export default function Root() {
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
+            bgcolor: '#2552', // Verde
           },
         }}
         variant="permanent"
@@ -96,13 +104,23 @@ export default function Root() {
           </ListItemButton>
         </List>
       </Drawer>
+
+      {/* Main content */}
       <Box
         component="main"
-        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
+        sx={{
+          flexGrow: 1,
+          bgcolor: 'background.default',
+          p: 3,
+        }}
       >
         <Toolbar />
+
         <Outlet />
       </Box>
+
+      {/* Footer */}
+      <Footer />
     </Box>
   );
 }
