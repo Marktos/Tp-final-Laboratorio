@@ -1,10 +1,11 @@
-export interface Product{
-    id?: number
-    name: string
-    price: number
-    description: string
-    quantity: number
-    createdAt?: string
-    updatedAt?: string
-    deletedAt?: string | null
+export interface Producto {
+    id?: number,
+    name: string,
+    description: string,
+    price: number,
+    quantity: number,
+    createdAt?: string,
+    updatedAt?: string,
+    deletedAt?: string | null,
+
 }

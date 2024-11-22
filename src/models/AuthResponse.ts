@@ -1,4 +1,4 @@
-export interface AuthResponseModel {
+export interface AuthRespuesta {
     token: string,
     email: string,
 }

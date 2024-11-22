@@ -1,25 +1,32 @@
-import { login } from "./auth/AuthController";
-import { createProduct, deleteProduct, editProduct, getAllProducts } from "./productos/ProductsController";
-import { changeRole, createUser, deleteUser, editUser, getAllUsers } from "./usuarios/UserController";
+import { login } from "./auth/LoginController";
+import {
+  crearProducto,
+  getAllProductos,
+  editarProducto,
+  borrarProducto,
+} from "./productos/ProductoController";
+import {
+  crearUsuario,
+  getAllUsuarios,
+  editarUsuario,
+  cambiarRol,
+  borrarUsuario,
+} from "./usuarios/UsuarioController";
 
+export const API = {
+  //Auth
+  login,
 
+  //Products
+  crearProducto,
+  getAllProductos,
+  editarProducto,
+  borrarProducto,
 
-export const API ={
-    //Auth
-    login,
-
-    //Products
-    createProduct,
-    getAllProducts,
-    deleteProduct,
-    editProduct,
-
-    //Users
-    createUser,
-    getAllUsers,
-    deleteUser,
-    editUser,
-    changeRole,
-
-
-} 
+  //Users
+  crearUsuario,
+  getAllUsuarios,
+  editarUsuario,
+  cambiarRol,
+  borrarUsuario,
+};
