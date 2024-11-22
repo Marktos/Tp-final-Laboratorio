@@ -8,7 +8,7 @@ export default function ProductosSection() {
   return (
     <Box sx={{ p: 3 }}>
       <Typography variant="h4" component="h1" align="center" sx={{ mb: 4 }}>
-        Product List
+        Lista de Productos
       </Typography>
 
       <Grid container spacing={3} justifyContent="center">

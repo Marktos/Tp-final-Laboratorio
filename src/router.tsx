@@ -15,12 +15,12 @@ export default function Router() {
         <Route path="/" element={<Login />}></Route>
         <Route element={<Root />}>
           <Route path="/home" element={<ProductosSection />} />
-          <Route path="/createProduct" element={<CrearProductosSection />} />
-          <Route path="/deletedProducts" element={<BorrarProductosSection />} />
+          <Route path="/crearProducto" element={<CrearProductosSection />} />
+          <Route path="/borrarProductos" element={<BorrarProductosSection />} />
 
-          <Route path="/users" element={<UsuariosSection />} />
-          <Route path="/createUser" element={<CrearUsuarioSection />} />
-          <Route path="/deletedUsers" element={<BorrarUsuariosSection />} />
+          <Route path="/usuarios" element={<UsuariosSection />} />
+          <Route path="/crearUsuarios" element={<CrearUsuarioSection />} />
+          <Route path="/borrarUsuarios" element={<BorrarUsuariosSection />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -17,7 +17,7 @@ type ProductProps = {
   price: number;
 };
 
-export default function ProductCard({
+export default function ProductoCard({
   id,
   name,
   description,
