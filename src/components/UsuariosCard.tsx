@@ -6,37 +6,26 @@ import {
   Typography,
   Box,
 } from "@mui/material";
-import { useUserStore } from "../stores/userStore"; // Aquí deberías adaptar el nombre según tu store
-import { useNavigate } from "react-router-dom";
+import { useUsuariosStore } from "../stores/UsuarioStore"; // Aquí deberías adaptar el nombre según tu store
 
-type UserProps = {
+type UsuarioProps = {
   id: number;
-  name: string;
   email: string;
   role: string;
 };
 
-export default function UserCard({ id, name, email, role }: UserProps) {
-  const userState = useUserStore.getState();
-  const deleteUser = userState.deleteUser;
-
-  // Navigate para redireccionar
-  const navigate = useNavigate();
+export default function UsuarioCard({ id, email, role }: UsuarioProps) {
+  const usuarioState = useUsuariosStore.getState();
+  const borrarUsuario = usuarioState.borrarUsuario;
 
   // Cambio las variables de edición al hacer clic en "editar"
-  const editing = () => {
-    userState.isEditing = true;
-    userState.editingUser = { id, name, email, role };
-
-    navigate("/editUser");
+  const cambiarRol = () => {
+    usuarioState.cambiarRol(id);
   };
 
   return (
     <Card sx={{ maxWidth: 400, margin: "auto", my: 2 }}>
       <CardContent>
-        <Typography variant="h5" component="div">
-          {name}
-        </Typography>
         <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
           {email}
         </Typography>
@@ -47,10 +36,20 @@ export default function UserCard({ id, name, email, role }: UserProps) {
         </Box>
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary" onClick={editing}>
-          Edit
+        <Button
+          size="small"
+          color={
+            role === "admin"
+              ? "success"
+              : role === "user"
+              ? "info"
+              : "secondary"
+          }
+          onClick={cambiarRol} // Usamos la función cambiarRol
+        >
+          {role}
         </Button>
-        <Button size="small" color="error" onClick={() => deleteUser(id)}>
+        <Button size="small" color="error" onClick={() => borrarUsuario(id)}>
           Delete
         </Button>
       </CardActions>
