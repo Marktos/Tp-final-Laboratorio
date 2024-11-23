@@ -4,9 +4,12 @@ import { Usuario } from "../models/UsuariosModel";
 
 type ProductoStore = {
   allUsuarios: Usuario[];
+  isEditing: boolean;
+  editingUser: Usuario;
 
   crearUsuario: (producto: Usuario) => Promise<void>;
   getAllUsuarios: () => Promise<void>;
+  editUser: (id: number, product: Usuario) => Promise<void>;
   cambiarRol: (id: number) => Promise<void>;
   borrarUsuario: (id: number) => Promise<void>;
   reset: () => void;
@@ -14,6 +17,8 @@ type ProductoStore = {
 
 export const useUsuariosStore = create<ProductoStore>((set, get) => ({
   allUsuarios: [] as Usuario[],
+  isEditing: false,
+  editingUser: {} as Usuario,
 
   // Creo un usuario
   crearUsuario: async (usuario: Usuario) => {
@@ -39,6 +44,21 @@ export const useUsuariosStore = create<ProductoStore>((set, get) => ({
       // Devuelve solo los usuarios si la respuesta es válida y lo guardo en el store
       if (response) {
         set({ allUsuarios: response });
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  },
+
+  //Retirada por muchos bugs
+  editUser: async (id: number, updatedUser: Usuario) => {
+    try {
+      const response = await API.editarUsuario(id, updatedUser);
+
+      // Reinicio las variables de edición
+      if (response) {
+        get().isEditing = false;
+        get().editingUser = {} as Usuario;
       }
     } catch (error) {
       console.error("Error:", error);

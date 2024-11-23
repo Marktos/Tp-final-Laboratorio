@@ -19,7 +19,7 @@ export default function Router() {
           <Route path="/borrarProductos" element={<BorrarProductosSection />} />
 
           <Route path="/usuarios" element={<UsuariosSection />} />
-          <Route path="/crearUsuarios" element={<CrearUsuarioSection />} />
+          <Route path="/crearUsuario" element={<CrearUsuarioSection />} />
           <Route path="/borrarUsuarios" element={<BorrarUsuariosSection />} />
         </Route>
       </Routes>

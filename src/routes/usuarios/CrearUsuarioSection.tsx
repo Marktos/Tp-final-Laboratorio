@@ -103,7 +103,7 @@ export default function CrearUsuarioSection() {
       />
 
       <Controller
-        name="Contrasenia"
+        name="password"
         control={control}
         rules={{
           required: "Crontrasenia es requerida",

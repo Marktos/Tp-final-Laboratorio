@@ -20,9 +20,9 @@ export const useProductosStore = create<ProductoStore>((set, get) => ({
   editandoProducto: {} as Producto,
 
   // Creo un producto
-  crearProducto: async (product: Producto) => {
+  crearProducto: async (producto: Producto) => {
     try {
-      const response = await API.crearProducto(product);
+      const response = await API.crearProducto(producto);
 
       // Devuelve solo el producto si la respuesta es válida y lo guardo en el store
       if (response) {
